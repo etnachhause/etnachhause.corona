@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+		<title>Corona</title>
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=0">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" >
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<link rel="apple-touch-icon"  href="bilder/corona_144.png">
+		<link rel="icon" type="image/x-icon" href="bilder/corona_16.png">
+  		<link rel="manifest" href="manifest.json">
+
+	</head>
+	<body>
+		<center>
+			<div style="text-align: center">
+				<br>
+				<h1>CORONA</h1>
+				<p style='font-family: Arial, Verdana' >(SARS Corv2)</p>
+				<h2></h2>
+
+				<input type='image' id='touchLocal' class='show-detail' src='bilder/corona_green.png' height='80px' align='middle'></button>
+				<p style='font-family: Arial, Verdana' id='demo' />
+			</div>
+		</center>
+
+		<script>
+
+   			if ('serviceWorker' in navigator) {
+			  navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+			   }
+			  ).catch(function(err) {
+			    alert( 'ServiceWorker wurde leider nicht registriert.=> keine offline Funktionalitaet', err);
+			 });
+			}
+			getLocation();
+			document.getElementById("touchLocal").onclick = function () {
+				getLocation();
+
+			};
+			function showPosition(position){
+				var add='%2C';
+				var url='https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/RKI_Landkreisdaten/FeatureServer/0/query?where=1%3D1&outFields=last_update,GEN,cases7_per_100k&geometry=';
+				var lat=position.coords.latitude;
+
+				var lon=position.coords.longitude;
+
+				url+=lon;
+				url+=add;
+				url+=lat;
+				url+='&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelWithin&returnGeometry=false&outSR=4326&f=json';
+				console.log(url);
+
+				var tmp=Get(url);
+				var obj=JSON.parse(tmp);
+				const attr = obj.features[0].attributes
+				console.log(attr.GEN);
+
+				var bnum=attr.cases7_per_100k;
+				var rounded=bnum.toFixed(3);
+
+				var b=document.getElementById(touchLocal);
+				if(rounded>=35){
+					b.src='bilder/corona_yellow.png';
+				}else if(rounded>=50){
+					b.src='bilder/corona_orange.png';
+				}else if(rounded>=100){
+					b.src='bilder/corona_red.png';
+				}
+
+				var rslt='Inzidenz der letzten <br>7 Tage pro 100000 Einwohner <br>';
+
+				rslt+='<h2>'+rounded+'</h2>';
+
+
+
+				rslt+=''+attr.GEN+'<br>';
+
+				rslt+='<br>';
+				rslt+=''+attr.last_update;
+				document.getElementById('demo').innerHTML=rslt;
+			};
+
+			function Get(yourUrl){
+			    var Httpreq = new XMLHttpRequest(); // a new request
+			    Httpreq.open("GET",yourUrl,false);
+			    Httpreq.send(null);
+			    return Httpreq.responseText;
+			};
+
+
+
+			 function getLocation() {
+				  if (navigator.geolocation) {
+					 navigator.geolocation.getCurrentPosition(showPosition);
+				  }
+			};
+			var getJSON = function(url, callback) {
+			    var xhr = new XMLHttpRequest();
+			    xhr.open('GET', url, true);
+			    xhr.responseType = 'json';
+			    xhr.onload = function() {
+			      var status = xhr.status;
+			      if (status === 200) {
+			        callback(null, xhr.response);
+			      } else {
+			        callback(status, xhr.response);
+			      }
+			    };
+			    xhr.send();
+			};
+
+
+		</script>
+	</body>
+</html>

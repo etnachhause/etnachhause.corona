@@ -1,0 +1,24 @@
+{
+  "name": "Corona",
+  "short_name": "corana",
+  "description": "my first Corona PWA ",
+  "start_url": "index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "de-de",
+
+  "icons": [
+  {
+      "src": "bilder/corona.png",
+      "sizes": "128x128",
+      "type": "image/png"
+   },
+   {
+      "src": "bilder/corona_144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+   }
+   ]
+   
+}
