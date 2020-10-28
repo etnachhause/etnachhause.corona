@@ -1,7 +1,7 @@
 {
   "name": "Corona",
   "short_name": "corona",
-  "description": "my first Corona PWA  ",
+  "description": "my first Corona PWA ",
   "start_url": "index.html",
   "scope": "/",
   "display": "standalone",
