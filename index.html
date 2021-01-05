@@ -92,6 +92,7 @@
 				var tmp2=Get(url2);
 				var obj2=JSON.parse(tmp2);
 				const attr2 = obj2.features[0].attributes
+				console.log(attr2.vaccinated);
 				rslt+='geimpfte: <br>';
 				rslt+=attr2.vaccinated;
 				
