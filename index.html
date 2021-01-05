@@ -92,9 +92,13 @@
 				var tmp2=Get(url2);
 				var obj2=JSON.parse(tmp2);
 				const attr2 = obj2.vaccinated;
-				
-				rslt+='geimpfte: <br>';
-				rslt+=attr2;
+				const attr3 = obj2.total;
+				const attr4 = obj2.quote;
+				rslt+='<br>';
+				rslt+='Impfungen: <br>';
+				rslt+=attr2+'/'+attr3;
+				rslt+='<br>';
+				rslt+=attr4+'%';
 				
 				document.getElementById('demo').innerHTML=rslt;
 			};
