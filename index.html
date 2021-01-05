@@ -85,6 +85,16 @@
 
 				rslt+='<br>';
 				rslt+=''+attr.last_update;
+				
+				rslt+='<br>';
+				
+				var url2='https://rki-vaccination-data.vercel.app/api';
+				var tmp2=Get(url2);
+				var obj2=JSON.parse(tmp2);
+				const attr2 = obj2.features[0].attributes
+				rslt+='geimpfte: <br>';
+				rslt+=attr2.vaccinated;
+				
 				document.getElementById('demo').innerHTML=rslt;
 			};
 
