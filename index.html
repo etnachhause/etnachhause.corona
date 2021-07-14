@@ -97,17 +97,21 @@
 				
 				const attr5 = obj2.2nd_vaccination.vaccinated;
 				const attr6 = obj2.total;
-				const attr7 = 100/(attr6/attr5);
+				var secondVaccinated=obj2.2nd_vaccination.vaccinated;
+				var secondTotal=obj2.total;
+				var second=100.0/(secondVaccinated/secondTotal);
+				var secondRslt=second.toFixed(3);
+				const attr7 = secondRslt;
 				
 				rslt+='<br>';
 				rslt+='1. Impfung: <br>';
-				rslt+=attr2+'/'+attr3;
+				rslt+=attr2+' / '+attr3;
 				rslt+='<br>';
 				rslt+=attr4+'%';
 				
 				rslt+='<br>';
 				rslt+='2. Impfung: <br>';
-				rslt+=attr5+'/'+attr6;
+				rslt+=attr5+' / '+attr6;
 				rslt+='<br>';
 				rslt+=attr7+'%';
 				
