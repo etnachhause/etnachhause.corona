@@ -99,9 +99,9 @@
 				var tmp3=Get(url3);
 				var obj3=JSON.parse(tmp3);
 				
-				const attr5 = obj3.secondVaccination.vaccinated;
+				const attr5 = obj3.data.secondVaccination.vaccinated;
 				
-				var secondVaccinated=obj3.secondVaccination.vaccinated;
+				var secondVaccinated=obj3.data.secondVaccination.vaccinated;
 				var secondTotal=obj2.total;
 				var second=100.0/(secondVaccinated/secondTotal);
 				var secondRslt=second.toFixed(3);
