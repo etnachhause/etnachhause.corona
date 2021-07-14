@@ -94,11 +94,22 @@
 				const attr2 = obj2.vaccinated;
 				const attr3 = obj2.total;
 				const attr4 = obj2.quote;
+				
+				const attr5 = obj2.2nd_vaccination.vaccinated;
+				const attr6 = obj2.total;
+				const attr7 = 100/(attr6/attr5);
+				
 				rslt+='<br>';
-				rslt+='Impfungen: <br>';
+				rslt+='1. Impfung: <br>';
 				rslt+=attr2+'/'+attr3;
 				rslt+='<br>';
 				rslt+=attr4+'%';
+				
+				rslt+='<br>';
+				rslt+='2. Impfung: <br>';
+				rslt+=attr5+'/'+attr6;
+				rslt+='<br>';
+				rslt+=attr7+'%';
 				
 				document.getElementById('demo').innerHTML=rslt;
 			};
