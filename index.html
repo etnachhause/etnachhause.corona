@@ -105,20 +105,20 @@
 				var secTotal=obj2.total;
 				var curr=obj3.data.secondVaccination.quote;
 				curr=curr*100;
-				var secondRslt=curr.toFixed(3);
+				var secondRslt=curr.toFixed(2);
 				const attr7 = secondRslt;
 				
 				rslt+='<br>';
-				rslt+='1. Impfung: <br>';
+				rslt+='1. Impfung: '+attr4+'% <br>';
 				rslt+=attr2+' / '+attr3;
 				rslt+='<br>';
-				rslt+=attr4+'%';
+				
 				
 				rslt+='<br>';
-				rslt+='2. Impfung: <br>';
+				rslt+='2. Impfung: '+attr7+'% <br>';
 				rslt+=attr5+' / '+attr3;
 				rslt+='<br>';
-				rslt+=attr7+'%';
+				
 				
 				document.getElementById('demo').innerHTML=rslt;
 			};
