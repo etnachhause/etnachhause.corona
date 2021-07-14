@@ -101,10 +101,11 @@
 				
 				const attr5 = obj3.data.secondVaccination.vaccinated;
 				
-				var secondVaccinated=obj3.data.secondVaccination.vaccinated;
-				var secondTotal=obj2.total;
-				var second=100.0/(secondVaccinated/secondTotal);
-				var secondRslt=second.toFixed(3);
+				var secVaccinated=obj3.data.secondVaccination.vaccinated;
+				var secTotal=obj2.total;
+				var curr=secVaccinated/secTotal;
+				curr=100/curr;
+				var secondRslt=curr.toFixed(3);
 				const attr7 = secondRslt;
 				
 				rslt+='<br>';
