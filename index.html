@@ -95,9 +95,10 @@
 				const attr3 = obj2.total;
 				const attr4 = obj2.quote;
 				
-				const attr5 = obj2.secondVaccination.vaccinated;
+				var obj3=JSON.parse(obj2.secondVaccination);
+				const attr5 = obj3.vaccinated;
 				const attr6 = obj2.total;
-				var secondVaccinated=obj2.secondVaccination.vaccinated;
+				var secondVaccinated=obj3.vaccinated;
 				var secondTotal=obj2.total;
 				var second=100.0/(secondVaccinated/secondTotal);
 				var secondRslt=second.toFixed(3);
